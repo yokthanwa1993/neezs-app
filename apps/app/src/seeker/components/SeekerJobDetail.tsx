@@ -5,7 +5,6 @@ import { Button } from '@/shared/components/ui/button';
 import EmblaCarousel from '@/shared/components/EmblaCarousel';
 import { apiClient } from '@neeiz/api-client';
 import { useSeekerAuth } from '../contexts/SeekerAuthContext';
-import { apiClient } from '@neeiz/api-client';
 
 type JobDetail = {
     id: string;
@@ -105,7 +104,6 @@ const SeekerJobDetail = () => {
                         className="h-12 text-lg font-semibold bg-primary text-white hover:bg-primary/90 rounded-lg px-4"
                         onClick={async () => {
                             try {
-                                const idToken = await (await import('firebase/auth')).getIdToken((user as any) || undefined as any).catch(()=>null);
                                 // Prefer backend status from SeekerUsers
                                 const token = await (user as any)?.getIdToken?.(true).catch(()=>null);
                                 const resp = await fetch('/api/users/me', {
