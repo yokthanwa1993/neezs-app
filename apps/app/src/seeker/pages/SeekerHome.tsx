@@ -19,6 +19,7 @@ type Job = {
     salary?: number;
     jobType?: string;
     images?: string[];
+    createdAt?: any;
 };
 
 const bannerSlides = [
@@ -94,6 +95,26 @@ const SeekerHome = () => {
             }
         } catch {}
         return url; // fallback to original
+    };
+
+    const toDate = (v: any): Date | null => {
+        if (!v) return null;
+        try {
+            if (typeof v?.toDate === 'function') return v.toDate();
+            if (typeof v === 'object' && typeof v.seconds === 'number') return new Date(v.seconds * 1000);
+            if (typeof v === 'number') return new Date(v);
+            if (typeof v === 'string') return new Date(v);
+        } catch {}
+        return null;
+    };
+
+    const formatDateTime = (v: any): string => {
+        const d = toDate(v);
+        if (!d || isNaN(d.getTime())) return '';
+        return d.toLocaleString('th-TH', {
+            year: 'numeric', month: 'short', day: '2-digit',
+            hour: '2-digit', minute: '2-digit'
+        });
     };
 
     return (
@@ -210,6 +231,9 @@ const SeekerHome = () => {
                                 <CardContent className="p-3">
                                     <h3 className="font-semibold text-gray-900 truncate">{job.title}</h3>
                                     <p className="text-sm text-gray-500 mt-1 truncate">{job.location || '-'}</p>
+                                    <p className="text-xs text-gray-400 mt-0.5">
+                                        {formatDateTime((job as any).createdAt) ? `ลงประกาศ ${formatDateTime((job as any).createdAt)}` : ''}
+                                    </p>
                                     <div className="flex justify-between items-center mt-3">
                                         <span className="text-lg font-bold text-green-600">
                                             {typeof job.salary === 'number' ? `฿${job.salary.toLocaleString('th-TH')}` : ''}
