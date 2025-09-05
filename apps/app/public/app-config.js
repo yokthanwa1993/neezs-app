@@ -3,8 +3,8 @@ window.APP_CONFIG = {
   // Environment configuration
   NODE_ENV: 'development',
   
-  // API configuration
-  API_BASE_URL: 'https://api.wwoom.com',
+  // API configuration (empty = same-origin; Vite dev proxy will forward /api → backend)
+  API_BASE_URL: '',
   
   // Google Maps API Key
   GOOGLE_MAPS_API_KEY: 'AIzaSyA2Pbk2W5oT1c2Lx68-hVfLvBZ1bawHT1w',
@@ -28,5 +28,5 @@ window.APP_CONFIG = {
 
 // Provide config for @neeiz/api-client (runtime override)
 window.__APP_CONFIG__ = Object.assign({}, window.__APP_CONFIG__ || {}, {
-  API_URL: 'https://api.wwoom.com'
+  API_URL: ''
 });

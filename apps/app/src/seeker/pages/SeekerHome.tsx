@@ -224,9 +224,12 @@ const SeekerHome = () => {
                                                 {(() => {
                                                     const d0 = (job as any)?.createdAt ? toDate((job as any).createdAt) : null;
                                                     const d = d0 && !isNaN(d0.getTime()) ? d0 : new Date();
-                                                    const dateStr = d.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: '2-digit' });
-                                                    const timeStr = d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-                                                    return `วันที่ ${dateStr} เวลา ${timeStr}`;
+                                                    const day = String(d.getDate()).padStart(2, '0');
+                                                    const month = String(d.getMonth() + 1).padStart(2, '0');
+                                                    const year = d.getFullYear() + 543; // Buddhist calendar year
+                                                    const hour = String(d.getHours()).padStart(2, '0');
+                                                    const minute = String(d.getMinutes()).padStart(2, '0');
+                                                    return `${day}/${month}/${year} ${hour}:${minute}`;
                                                 })()}
                                             </span>
                                         </div>
