@@ -162,9 +162,7 @@ const SeekerHome = () => {
                                             );
                                           })()}
                                         </div>
-                                        <Button className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5 py-2 h-auto" onClick={(e) => { e.stopPropagation(); navigate('/seeker/jobs'); }}>
-                                          เลือกหมวดหมู่งาน
-                                        </Button>
+                                        {/* Removed inline category button; whole banner remains clickable */}
                                       </div>
                                       <div className="absolute right-0 bottom-0 w-1/2 h-full">
                                         <img src={slide.imageUrl} alt={slide.title} className="absolute bottom-0 right-[-20px] h-[110%] w-auto object-contain" />
