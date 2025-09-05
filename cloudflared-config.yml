@@ -5,11 +5,11 @@ credentials-file: /Users/yok/.cloudflared/fad92815-0281-494f-8fb4-1daec7ca5c17.j
 ingress:
   # Subdomain routing
   - hostname: app.wwoom.com
-    service: http://localhost:5003
+    service: http://127.0.0.1:5003
   - hostname: web.wwoom.com
-    service: http://localhost:3010
+    service: http://127.0.0.1:3010
   - hostname: api.wwoom.com
-    service: http://localhost:8000
+    service: http://127.0.0.1:8000
   # Default catch-all
   - service: http_status:404
 
