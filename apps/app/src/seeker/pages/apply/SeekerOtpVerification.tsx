@@ -11,7 +11,8 @@ import {
   InputOTPSeparator,
 } from "@/shared/components/ui/input-otp";
 import { RecaptchaVerifier, linkWithPhoneNumber, signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
-import { seekerAuth } from '../../lib/seekerFirebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { seekerAuth, seekerDb } from '../../lib/seekerFirebase';
 
 const SeekerOtpVerification: React.FC = () => {
     const navigate = useNavigate();
@@ -84,7 +85,23 @@ const SeekerOtpVerification: React.FC = () => {
         setVerifying(true);
         try {
             const credential = await confirmationRef.current.confirm(otp);
-            console.log('✅ Phone verified for uid:', credential.user?.uid);
+            const uid = credential.user?.uid;
+            console.log('✅ Phone verified for uid:', uid);
+            // Persist verification status to Firestore user profile
+            try {
+                const e164 = toE164TH(phone);
+                await setDoc(
+                    doc(seekerDb, 'users', uid || 'unknown'),
+                    {
+                        phoneNumber: e164,
+                        phoneVerified: true,
+                        phoneVerifiedAt: new Date().toISOString(),
+                    },
+                    { merge: true }
+                );
+            } catch (persistErr) {
+                console.warn('⚠️ Failed to persist phone verification status:', persistErr);
+            }
             navigate('/seeker/apply/ekyc-id', { state: { jobId, phone } });
         } catch (e: any) {
             console.error('Invalid OTP', e);
