@@ -19,8 +19,9 @@
     {
       "name": "neezs-frontend",
       "cwd": "./apps/app",
-      "script": "npm",
-      "args": "run dev -- --strictPort --port 5003 --host 0.0.0.0",
+      "script": "/Users/yok/.nvm/versions/node/v20.19.5/bin/node",
+      "args": "node_modules/vite/bin/vite.js --strictPort --port 5003 --host 0.0.0.0",
+      "interpreter": "none",
       "env": {
         "NODE_ENV": "development",
         "PORT": "5003"
