@@ -182,15 +182,28 @@ router.post('/line', async (req: Request, res: Response) => {
       }
     }
 
-    const userDocRef = db.collection('users').doc(userRecord.uid);
-    await userDocRef.set({
-      lineUserId: lineUserId,
-      displayName: displayName || null,
-      pictureUrl: pictureUrl || null,
-      email: email || null,
-      role: role,
-      lastLogin: new Date(),
-    }, { merge: true });
+    // Persist profile per role collection
+    if (role === 'seeker') {
+      const seekerDoc = db.collection('SeekerUsers').doc(userRecord.uid);
+      await seekerDoc.set({
+        lineUserId: lineUserId,
+        displayName: displayName || null,
+        pictureUrl: pictureUrl || null,
+        email: email || null,
+        role: role,
+        lastLogin: new Date(),
+      }, { merge: true });
+    } else {
+      const userDocRef = db.collection('users').doc(userRecord.uid);
+      await userDocRef.set({
+        lineUserId: lineUserId,
+        displayName: displayName || null,
+        pictureUrl: pictureUrl || null,
+        email: email || null,
+        role: role,
+        lastLogin: new Date(),
+      }, { merge: true });
+    }
 
     const customToken = await auth.createCustomToken(userRecord.uid);
     console.log('🎟️ Custom token created successfully');

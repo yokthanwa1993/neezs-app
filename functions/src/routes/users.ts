@@ -21,9 +21,7 @@ router.post('/phone-verified', async (req: Request, res: Response) => {
       phoneVerified: true,
       phoneVerifiedAt: new Date(),
     };
-    // Write to primary users collection
-    await db.collection('users').doc(uid).set(payload, { merge: true });
-    // Also mirror to SeekerUsers collection for seeker-specific views
+    // Write only to SeekerUsers collection for seeker-specific views
     await db.collection('SeekerUsers').doc(uid).set(payload, { merge: true });
     return res.status(200).json({ ok: true });
   } catch (error: any) {
