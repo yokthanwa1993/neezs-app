@@ -3,20 +3,68 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { ArrowLeft } from 'lucide-react';
+import { seekerAuth } from '../../lib/seekerFirebase';
 
 const SeekerBidPrice: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [price, setPrice] = useState<string>('');
+  const [submitting, setSubmitting] = useState(false);
 
   const isValid = price.trim() !== '' && !Number.isNaN(Number(price)) && Number(price) > 0;
 
-  const handleSubmit = () => {
-    const bid = Number(price);
-    // TODO: POST bid to API when available
-    console.log('Submitting bid:', { bid, applyContext: location.state });
-    alert('ส่งข้อเสนอราคาเรียบร้อย');
-    navigate('/seeker/home', { replace: true });
+  const handleSubmit = async () => {
+    if (!isValid) return;
+    setSubmitting(true);
+    try {
+      const bid = Number(price);
+      const state = (location.state || {}) as any;
+      const jobId = state?.jobId as string | undefined;
+      const phone = state?.phone as string | undefined;
+      let idCardImageUrl: string | undefined = undefined;
+      const idCardImage = state?.idCardImage as string | undefined;
+      const selectedCategories = (state?.selectedCategories as string[] | undefined) || [];
+
+      if (!jobId) throw new Error('Missing jobId in context');
+      if (!phone) throw new Error('Missing phone in context');
+
+      // If ID card image is a data URL, upload it to storage via backend helper
+      if (idCardImage && idCardImage.startsWith('data:')) {
+        const contentType = idCardImage.substring(5, idCardImage.indexOf(';'));
+        const resp = await fetch('/api/jobs/upload-json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileBase64: idCardImage, contentType, fileName: 'idcard.jpg' }),
+        });
+        if (!resp.ok) {
+          const e = await resp.json().catch(() => ({}));
+          throw new Error(e.message || 'Failed to upload ID card image');
+        }
+        const data = await resp.json();
+        idCardImageUrl = data.url as string;
+      }
+
+      const idToken = await seekerAuth.currentUser?.getIdToken(true);
+      const appResp = await fetch('/api/applications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
+        },
+        credentials: 'include',
+        body: JSON.stringify({ jobId, bid, phoneNumber: phone, idCardImageUrl, selectedCategories }),
+      });
+      if (!appResp.ok) {
+        const e = await appResp.json().catch(() => ({}));
+        throw new Error(e.message || 'Failed to submit application');
+      }
+      // Success: go back to home
+      navigate('/seeker/home', { replace: true });
+    } catch (e: any) {
+      alert(e?.message || 'เกิดข้อผิดพลาดในการสมัครงาน');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -57,10 +105,10 @@ const SeekerBidPrice: React.FC = () => {
           </Button>
           <Button
             onClick={handleSubmit}
-            disabled={!isValid}
+            disabled={!isValid || submitting}
             className="flex-1 h-12 text-lg font-bold rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 text-black hover:from-amber-500 hover:to-yellow-600 disabled:bg-gray-200 disabled:text-gray-500"
           >
-            ยืนยันราคาและสมัครงาน
+            {submitting ? 'กำลังส่ง...' : 'ยืนยันราคาและสมัครงาน'}
           </Button>
         </div>
       </footer>

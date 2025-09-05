@@ -27,8 +27,8 @@ const SeekerEkycFace: React.FC = () => {
   }, []);
 
   const handleFinish = () => {
-    console.log('eKYC data:', location.state);
-    navigate('/seeker/home', { replace: true });
+    // After successful eKYC, proceed to bid price step with gathered context
+    navigate('/seeker/apply/bid', { state: { ...location.state } });
   };
 
   const previewSrc = (location.state as any)?.idCardImage || 'https://placehold.co/300x300?text=Face';
@@ -75,4 +75,3 @@ const SeekerEkycFace: React.FC = () => {
 };
 
 export default SeekerEkycFace;
-

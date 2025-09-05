@@ -9,6 +9,7 @@ import imageRoutes from './routes/images';
 import uploadRoutes from './routes/uploads';
 import logRoutes from './routes/logs';
 import userRoutes from './routes/users';
+import applicationRoutes from './routes/applications';
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use('/api/uploads', uploadRoutes);
 app.use('/api/images', imageRoutes);
 app.use('/api/logs', logRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/applications', applicationRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({ status: 'ok', message: 'Neeiz API is running!' });
