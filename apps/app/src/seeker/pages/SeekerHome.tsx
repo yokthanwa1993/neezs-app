@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/components/ui/button';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import useEmblaCarousel from 'embla-carousel-react';
-import { DotButton } from '@/shared/components/EmblaCarouselButtons';
 import { useSeekerAuth } from '../contexts/SeekerAuthContext';
 import { logger } from '@/shared/utils/logger';
 import { apiClient } from '@neeiz/api-client';
@@ -19,6 +18,7 @@ type Job = {
     salary?: number;
     jobType?: string;
     images?: string[];
+    createdAt?: any;
 };
 
 const bannerSlides = [
@@ -78,6 +78,7 @@ const SeekerHome = () => {
         keepPreviousData: true,
     });
 
+
     if (authLoading || (listLoading && !data)) {
         return <LoadingScreen title="กำลังเตรียมความพร้อม..." subtitle="กำลังตรวจสอบสถานะและโหลดรายการงาน"/>;
     }
@@ -93,6 +94,26 @@ const SeekerHome = () => {
             }
         } catch {}
         return url; // fallback to original
+    };
+
+    const toDate = (v: any): Date | null => {
+        if (!v) return null;
+        try {
+            if (typeof v?.toDate === 'function') return v.toDate();
+            if (typeof v === 'object' && typeof v.seconds === 'number') return new Date(v.seconds * 1000);
+            if (typeof v === 'number') return new Date(v);
+            if (typeof v === 'string') return new Date(v);
+        } catch {}
+        return null;
+    };
+
+    const formatDateTime = (v: any): string => {
+        const d = toDate(v);
+        if (!d || isNaN(d.getTime())) return '';
+        return d.toLocaleString('th-TH', {
+            year: 'numeric', month: 'short', day: '2-digit',
+            hour: '2-digit', minute: '2-digit'
+        });
     };
 
     return (
@@ -113,32 +134,81 @@ const SeekerHome = () => {
                     <div className="flex">
                         {bannerSlides.map((slide, index) => (
                             <div className="flex-[0_0_100%] min-w-0" key={index}>
-                                <div className={`${slide.bgColor} rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden`}>
-                                    <div className="w-1/2 z-10">
+                                {index === 0 ? (
+                                    // Dynamic popular-jobs banner
+                                    <div
+                                      className={`bg-yellow-400 rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden cursor-pointer`}
+                                      onClick={() => navigate('/seeker/jobs')}
+                                    >
+                                      <div className="w-1/2 z-10">
+                                        <h2 className="text-xl font-bold">งานยอดนิยม</h2>
+                                        <p className="text-xs mt-2 mb-3">สำรวจหมวดหมู่งานที่คนหามากที่สุด</p>
+                                        {/* Top categories quick view */}
+                                        <div className="flex flex-col gap-1 mb-3">
+                                          {(() => {
+                                            // Build quick top-3 popular categories summary
+                                            const counts: Record<string, number> = {};
+                                            const mapLabel = (jt?: string) => {
+                                              switch ((jt || '').toLowerCase()) {
+                                                case 'full-time': return 'งานประจำ';
+                                                case 'part-time': return 'งานพาร์ทไทม์';
+                                                case 'freelance': return 'ฟรีแลนซ์';
+                                                case 'internship': return 'ฝึกงาน';
+                                                default: return 'อื่นๆ';
+                                              }
+                                            };
+                                            (data || []).forEach((j:any) => {
+                                              const label = (j.category as string) || mapLabel(j.jobType);
+                                              counts[label] = (counts[label] || 0) + 1;
+                                            });
+                                            const top = Object.entries(counts)
+                                              .sort((a,b) => b[1]-a[1])
+                                              .slice(0,3);
+                                            const short = (n:number) => {
+                                              if (n >= 100000) return 'แสน+ งาน';
+                                              if (n >= 10000) return 'หมื่น+ งาน';
+                                              return `${n.toLocaleString('th-TH')} งาน`;
+                                            };
+                                            return top.length === 0 ? (
+                                              <span className="text-[11px] text-white/80">ยังไม่มีข้อมูลหมวดหมู่ยอดนิยม</span>
+                                            ) : (
+                                              top.map(([label, cnt]) => (
+                                                <div key={label} className="text-[11px] bg-white/15 rounded-full px-2 py-1 w-max">
+                                                  <span className="font-semibold text-white">{label}</span>
+                                                  <span className="mx-1">•</span>
+                                                  <span className="text-white/90">{short(cnt)}</span>
+                                                </div>
+                                              ))
+                                            );
+                                          })()}
+                                        </div>
+                                        {/* Removed inline category button; whole banner remains clickable */}
+                                      </div>
+                                      <div className="absolute right-0 bottom-0 w-1/2 h-full">
+                                        <img src={slide.imageUrl} alt={slide.title} className="absolute bottom-0 right-[-20px] h-[110%] w-auto object-contain" />
+                                      </div>
+                                    </div>
+                                ) : (
+                                    <div className={`${slide.bgColor} rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden`}>
+                                      <div className="w-1/2 z-10">
                                         <h2 className="text-xl font-bold">{slide.title}</h2>
                                         <p className="text-xs mt-2 mb-4">{slide.description}</p>
                                         <Button className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5 py-2 h-auto">
-                                            {slide.buttonText}
+                                          {slide.buttonText}
                                         </Button>
-                                    </div>
-                                    <div className="absolute right-0 bottom-0 w-1/2 h-full">
+                                      </div>
+                                      <div className="absolute right-0 bottom-0 w-1/2 h-full">
                                         <img src={slide.imageUrl} alt={slide.title} className="absolute bottom-0 right-[-20px] h-[110%] w-auto object-contain" />
+                                      </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         ))}
                     </div>
-                    <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center">
-                        {scrollSnaps.map((_, index) => (
-                            <DotButton
-                                key={index}
-                                selected={index === selectedIndex}
-                                onClick={() => emblaApi && emblaApi.scrollTo(index)}
-                            />
-                        ))}
-                    </div>
+                    {/* Removed dot indicators */}
                 </div>
             </section>
+
 
             {/* Job Listings */}
             <section className="pt-2 pb-6 px-4">
@@ -161,9 +231,20 @@ const SeekerHome = () => {
                                     <h3 className="font-semibold text-gray-900 truncate">{job.title}</h3>
                                     <p className="text-sm text-gray-500 mt-1 truncate">{job.location || '-'}</p>
                                     <div className="flex justify-between items-center mt-3">
-                                        <span className="text-lg font-bold text-green-600">
-                                            {typeof job.salary === 'number' ? `฿${job.salary.toLocaleString('th-TH')}` : ''}
-                                        </span>
+                                        <div className="flex items-baseline gap-2 min-w-0">
+                                            <span className="text-lg font-bold text-green-600 whitespace-nowrap">
+                                                {typeof job.salary === 'number' ? `฿${job.salary.toLocaleString('th-TH')}` : ''}
+                                            </span>
+                                            <span className="text-[11px] text-gray-500 truncate">
+                                                {(() => {
+                                                    const d0 = (job as any)?.createdAt ? toDate((job as any).createdAt) : null;
+                                                    const d = d0 && !isNaN(d0.getTime()) ? d0 : new Date();
+                                                    const dateStr = d.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: '2-digit' });
+                                                    const timeStr = d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+                                                    return `วันที่ ${dateStr} เวลา ${timeStr}`;
+                                                })()}
+                                            </span>
+                                        </div>
                                         <Button size="sm" className="bg-primary text-white hover:bg-primary/90 rounded-lg text-xs px-4 py-2 h-auto">
                                             สมัคร
                                         </Button>

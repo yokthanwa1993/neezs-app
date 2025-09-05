@@ -10,7 +10,7 @@ import {
   InputOTPSlot,
   InputOTPSeparator,
 } from "@/shared/components/ui/input-otp";
-import { RecaptchaVerifier, linkWithPhoneNumber, signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
+import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, PhoneAuthProvider, linkWithCredential, updatePhoneNumber, signInWithCredential } from 'firebase/auth';
 import { seekerAuth } from '../../lib/seekerFirebase';
 
 const SeekerOtpVerification: React.FC = () => {
@@ -25,6 +25,7 @@ const SeekerOtpVerification: React.FC = () => {
     const [sending, setSending] = useState(false);
     const [verifying, setVerifying] = useState(false);
     const confirmationRef = useRef<ConfirmationResult | null>(null);
+    const modeRef = useRef<'link' | 'update' | 'signIn'>('signIn');
     const recaptchaRef = useRef<RecaptchaVerifier | null>(null);
 
     const isValidPhone = useMemo(() => phone.replace(/\D/g, '').length === 10, [phone]);
@@ -63,11 +64,12 @@ const SeekerOtpVerification: React.FC = () => {
         try {
             const appVerifier = ensureRecaptcha();
             const phoneNumber = toE164TH(digits);
-            if (seekerAuth.currentUser) {
-                confirmationRef.current = await linkWithPhoneNumber(seekerAuth.currentUser, phoneNumber, appVerifier);
-            } else {
-                confirmationRef.current = await signInWithPhoneNumber(seekerAuth, phoneNumber, appVerifier);
-            }
+            // Always request verification via signInWithPhoneNumber to obtain verificationId
+            // Decide how to apply the credential later (link/update/signIn)
+            confirmationRef.current = await signInWithPhoneNumber(seekerAuth, phoneNumber, appVerifier);
+            const hasUser = !!seekerAuth.currentUser;
+            const hasPhone = !!seekerAuth.currentUser?.phoneNumber || (seekerAuth.currentUser?.providerData || []).some(p => p.providerId === 'phone');
+            modeRef.current = hasUser ? (hasPhone ? 'update' : 'link') : 'signIn';
             setStep('otp');
             setResendIn(30);
         } catch (e: any) {
@@ -83,12 +85,45 @@ const SeekerOtpVerification: React.FC = () => {
         if (!isValidOtp || !confirmationRef.current) return;
         setVerifying(true);
         try {
-            const credential = await confirmationRef.current.confirm(otp);
-            console.log('✅ Phone verified for uid:', credential.user?.uid);
+            const verificationId = confirmationRef.current.verificationId;
+            const phoneCred = PhoneAuthProvider.credential(verificationId, otp);
+            let uid: string | undefined = undefined;
+            if (modeRef.current === 'link' && seekerAuth.currentUser) {
+                const res = await linkWithCredential(seekerAuth.currentUser, phoneCred);
+                uid = res.user?.uid;
+            } else if (modeRef.current === 'update' && seekerAuth.currentUser) {
+                await updatePhoneNumber(seekerAuth.currentUser, phoneCred);
+                uid = seekerAuth.currentUser.uid;
+            } else {
+                const res = await signInWithCredential(seekerAuth, phoneCred);
+                uid = res.user?.uid;
+            }
+            console.log('✅ Phone verified for uid:', uid);
+            // Persist verification status via backend (Admin SDK) to avoid client Firestore rule issues
+            try {
+                const e164 = toE164TH(phone);
+                const idToken = await seekerAuth.currentUser?.getIdToken(true);
+                await fetch('/api/users/phone-verified', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
+                    },
+                    body: JSON.stringify({ phoneNumber: e164, idToken }),
+                    credentials: 'include',
+                });
+            } catch (persistErr) {
+                console.warn('⚠️ Failed to persist phone verification status:', persistErr);
+            }
             navigate('/seeker/apply/ekyc-id', { state: { jobId, phone } });
         } catch (e: any) {
             console.error('Invalid OTP', e);
-            setError('รหัสไม่ถูกต้อง โปรดลองอีกครั้ง');
+            const code = e?.code || '';
+            if (code === 'auth/credential-already-in-use') {
+                setError('เบอร์นี้ถูกใช้กับบัญชีอื่นอยู่แล้ว');
+            } else {
+                setError('รหัสไม่ถูกต้อง โปรดลองอีกครั้ง');
+            }
         } finally {
             setVerifying(false);
         }

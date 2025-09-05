@@ -14,6 +14,7 @@ type Job = {
   location?: string;
   salary?: number;
   jobType?: string;
+  category?: string;
   images?: string[];
 };
 
@@ -38,6 +39,8 @@ const JobFeed = () => {
     };
     load();
   }, []);
+
+  // No query-param sync; simple category UI only
 
   return (
     <div className="min-h-screen bg-white pb-20">

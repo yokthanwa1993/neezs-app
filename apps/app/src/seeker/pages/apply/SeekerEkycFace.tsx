@@ -27,9 +27,11 @@ const SeekerEkycFace: React.FC = () => {
   }, []);
 
   const handleFinish = () => {
-    console.log('eKYC data:', location.state);
-    navigate('/seeker/home', { replace: true });
+    // After successful eKYC, proceed to bid price step with gathered context
+    navigate('/seeker/apply/bid', { state: { ...location.state } });
   };
+
+  const previewSrc = (location.state as any)?.idCardImage || 'https://placehold.co/300x300?text=Face';
 
   return (
     <div className="bg-gray-50 flex flex-col">
@@ -40,7 +42,7 @@ const SeekerEkycFace: React.FC = () => {
         </div>
 
         <div className="relative w-64 h-64 rounded-full overflow-hidden border-8 border-white shadow-2xl mb-6">
-          <img src="https://via.placeholder.com/300" alt="Face Scan" className="w-full h-full object-cover" />
+          <img src={previewSrc} alt="Face Scan" className="w-full h-full object-cover" />
           <div className={`absolute inset-0 rounded-full border-4 ${isVerified ? 'border-green-400' : 'border-yellow-400'} animate-pulse`}></div>
         </div>
 
@@ -73,5 +75,3 @@ const SeekerEkycFace: React.FC = () => {
 };
 
 export default SeekerEkycFace;
-
-
