@@ -114,18 +114,76 @@ const SeekerHome = () => {
                     <div className="flex">
                         {bannerSlides.map((slide, index) => (
                             <div className="flex-[0_0_100%] min-w-0" key={index}>
-                                <div className={`${slide.bgColor} rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden`}>
-                                    <div className="w-1/2 z-10">
+                                {index === 0 ? (
+                                    // Dynamic popular-jobs banner
+                                    <div
+                                      className={`bg-yellow-400 rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden cursor-pointer`}
+                                      onClick={() => navigate('/seeker/jobs')}
+                                    >
+                                      <div className="w-1/2 z-10">
+                                        <h2 className="text-xl font-bold">งานยอดนิยม</h2>
+                                        <p className="text-xs mt-2 mb-3">สำรวจหมวดหมู่งานที่คนหามากที่สุด</p>
+                                        {/* Top categories quick view */}
+                                        <div className="flex flex-col gap-1 mb-3">
+                                          {(() => {
+                                            // Build quick top-3 popular categories summary
+                                            const counts: Record<string, number> = {};
+                                            const mapLabel = (jt?: string) => {
+                                              switch ((jt || '').toLowerCase()) {
+                                                case 'full-time': return 'งานประจำ';
+                                                case 'part-time': return 'งานพาร์ทไทม์';
+                                                case 'freelance': return 'ฟรีแลนซ์';
+                                                case 'internship': return 'ฝึกงาน';
+                                                default: return 'อื่นๆ';
+                                              }
+                                            };
+                                            (data || []).forEach((j:any) => {
+                                              const label = (j.category as string) || mapLabel(j.jobType);
+                                              counts[label] = (counts[label] || 0) + 1;
+                                            });
+                                            const top = Object.entries(counts)
+                                              .sort((a,b) => b[1]-a[1])
+                                              .slice(0,3);
+                                            const short = (n:number) => {
+                                              if (n >= 100000) return 'แสน+ งาน';
+                                              if (n >= 10000) return 'หมื่น+ งาน';
+                                              return `${n.toLocaleString('th-TH')} งาน`;
+                                            };
+                                            return top.length === 0 ? (
+                                              <span className="text-[11px] text-white/80">ยังไม่มีข้อมูลหมวดหมู่ยอดนิยม</span>
+                                            ) : (
+                                              top.map(([label, cnt]) => (
+                                                <div key={label} className="text-[11px] bg-white/15 rounded-full px-2 py-1 w-max">
+                                                  <span className="font-semibold text-white">{label}</span>
+                                                  <span className="mx-1">•</span>
+                                                  <span className="text-white/90">{short(cnt)}</span>
+                                                </div>
+                                              ))
+                                            );
+                                          })()}
+                                        </div>
+                                        <Button className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5 py-2 h-auto" onClick={(e) => { e.stopPropagation(); navigate('/seeker/jobs'); }}>
+                                          เลือกหมวดหมู่งาน
+                                        </Button>
+                                      </div>
+                                      <div className="absolute right-0 bottom-0 w-1/2 h-full">
+                                        <img src={slide.imageUrl} alt={slide.title} className="absolute bottom-0 right-[-20px] h-[110%] w-auto object-contain" />
+                                      </div>
+                                    </div>
+                                ) : (
+                                    <div className={`${slide.bgColor} rounded-2xl p-6 flex items-center text-white relative h-48 overflow-hidden`}>
+                                      <div className="w-1/2 z-10">
                                         <h2 className="text-xl font-bold">{slide.title}</h2>
                                         <p className="text-xs mt-2 mb-4">{slide.description}</p>
                                         <Button className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5 py-2 h-auto">
-                                            {slide.buttonText}
+                                          {slide.buttonText}
                                         </Button>
-                                    </div>
-                                    <div className="absolute right-0 bottom-0 w-1/2 h-full">
+                                      </div>
+                                      <div className="absolute right-0 bottom-0 w-1/2 h-full">
                                         <img src={slide.imageUrl} alt={slide.title} className="absolute bottom-0 right-[-20px] h-[110%] w-auto object-contain" />
+                                      </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         ))}
                     </div>
