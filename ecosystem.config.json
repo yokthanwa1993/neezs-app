@@ -1,0 +1,64 @@
+{
+  "apps": [
+    {
+      "name": "neezs-backend",
+      "cwd": "./functions",
+      "script": "npm",
+      "args": "run dev",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "8000"
+      },
+      "watch": true,
+      "ignore_watch": ["node_modules", "logs"],
+      "log_file": "./logs/backend.log",
+      "error_file": "./logs/backend-error.log",
+      "out_file": "./logs/backend-out.log",
+      "time": true
+    },
+    {
+      "name": "neezs-frontend",
+      "cwd": "./apps/app",
+      "script": "npm",
+      "args": "run dev -- --strictPort --port 5003 --host 0.0.0.0",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "5003"
+      },
+      "watch": false,
+      "log_file": "./logs/frontend.log",
+      "error_file": "./logs/frontend-error.log",
+      "out_file": "./logs/frontend-out.log",
+      "time": true
+    },
+    {
+      "name": "neezs-web",
+      "cwd": "./apps/web",
+      "script": "npm",
+      "args": "run dev -- -p 3010",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3010"
+      },
+      "watch": false,
+      "log_file": "./logs/web.log",
+      "error_file": "./logs/web-error.log",
+      "out_file": "./logs/web-out.log",
+      "time": true
+    },
+    {
+      "name": "cloudflared-tunnel",
+      "cwd": ".",
+      "script": "bin/cloudflared-run.sh",
+      "interpreter": "none",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "watch": false,
+      "log_file": "./logs/cloudflared.log",
+      "error_file": "./logs/cloudflared-error.log",
+      "out_file": "./logs/cloudflared-out.log",
+      "time": true
+    }
+  ]
+}

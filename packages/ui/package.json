@@ -1,0 +1,52 @@
+{
+  "name": "@neezs/ui",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index-minimal.js",
+  "module": "./dist/index-minimal.mjs",
+  "types": "./dist/index-minimal.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index-minimal.mjs",
+      "require": "./dist/index-minimal.js",
+      "types": "./dist/index-minimal.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index-minimal.ts --format esm,cjs --external react --external react-dom",
+    "dev": "tsup src/index-minimal.ts --format esm,cjs --external react --external react-dom --watch",
+    "playground": "cd playground && python3 -m http.server 3001 || npx serve . -p 3001",
+    "clean": "rm -rf .turbo dist",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.263.1",
+    "tailwind-merge": "^2.2.0",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
+    "@radix-ui/react-progress": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

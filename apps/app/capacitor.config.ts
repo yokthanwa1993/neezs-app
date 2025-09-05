@@ -1,0 +1,1 @@
+capacitor/capacitor.config.ts

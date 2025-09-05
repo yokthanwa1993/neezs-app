@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEEZS Logs Viewer</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #252526;
+            border-radius: 5px;
+        }
+        .log-content {
+            background: #1e1e1e;
+            border: 1px solid #3e3e3e;
+            border-radius: 5px;
+            padding: 15px;
+            height: 70vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .refresh-btn {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .refresh-btn:hover {
+            background: #005a9e;
+        }
+        .clear-btn {
+            background: #d73a49;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .clear-btn:hover {
+            background: #b31d28;
+        }
+        .timestamp {
+            color: #6a9955;
+        }
+        .level-INFO {
+            color: #4fc1ff;
+        }
+        .level-ERROR {
+            color: #f85149;
+        }
+        .level-WARN {
+            color: #f0b900;
+        }
+        .level-DEBUG {
+            color: #a5a5a5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 NEEZS Authentication Logs</h1>
+            <div>
+                <button class="refresh-btn" onclick="refreshLogs()">🔄 Refresh</button>
+                <button class="clear-btn" onclick="clearLogs()">🗑️ Clear</button>
+            </div>
+        </div>
+        <div class="log-content" id="logContent">
+            Loading logs...
+        </div>
+    </div>
+
+    <script>
+        async function loadLogs() {
+            try {
+                const response = await fetch('/api/logs/auth.log');
+                if (response.ok) {
+                    const data = await response.json();
+                    const logContent = document.getElementById('logContent');
+                    logContent.innerHTML = formatLogs(data.content || 'No logs available.');
+                    logContent.scrollTop = logContent.scrollHeight;
+                } else {
+                    document.getElementById('logContent').innerText = 'Error loading logs.';
+                }
+            } catch (error) {
+                document.getElementById('logContent').innerText = 'Error: ' + error.message;
+            }
+        }
+
+        function formatLogs(content) {
+            return content
+                .replace(/\[(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)\]/g, '<span class="timestamp">[$1]</span>')
+                .replace(/\[INFO\]/g, '<span class="level-INFO">[INFO]</span>')
+                .replace(/\[ERROR\]/g, '<span class="level-ERROR">[ERROR]</span>')
+                .replace(/\[WARN\]/g, '<span class="level-WARN">[WARN]</span>')
+                .replace(/\[DEBUG\]/g, '<span class="level-DEBUG">[DEBUG]</span>');
+        }
+
+        function refreshLogs() {
+            loadLogs();
+        }
+
+        async function clearLogs() {
+            if (confirm('Are you sure you want to clear all logs?')) {
+                try {
+                    await fetch('/api/logs/clear/auth.log', { method: 'POST' });
+                    loadLogs();
+                } catch (error) {
+                    alert('Error clearing logs: ' + error.message);
+                }
+            }
+        }
+
+        // Auto-refresh every 3 seconds
+        setInterval(loadLogs, 3000);
+        
+        // Initial load
+        loadLogs();
+    </script>
+</body>
+</html>
