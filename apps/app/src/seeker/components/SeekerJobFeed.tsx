@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search, SlidersHorizontal, Star, Briefcase, Plus } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/shared/components/ui/input';
 import { Button } from '@/shared/components/ui/button';
 import { Card, CardContent } from '@/shared/components/ui/card';
@@ -20,10 +20,9 @@ type Job = {
 
 const JobFeed = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [activeCategory, setActiveCategory] = useState('ทั้งหมด');
+  const [activeCategory, setActiveCategory] = useState('งานพาร์ทไทม์');
 
-  const categories = ['ทั้งหมด','งานพาร์ทไทม์', 'งานประจำ', 'ฟรีแลนซ์', 'ฝึกงาน'];
+  const categories = ['งานพาร์ทไทม์', 'งานประจำ', 'ฟรีแลนซ์', 'ฝึกงาน'];
   const [items, setItems] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,27 +40,7 @@ const JobFeed = () => {
     load();
   }, []);
 
-  // Sync category from query param
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const cat = params.get('category');
-    if (cat) setActiveCategory(cat);
-  }, [location.search]);
-
-  const mapLabel = (jt?: string) => {
-    switch ((jt || '').toLowerCase()) {
-      case 'full-time': return 'งานประจำ';
-      case 'part-time': return 'งานพาร์ทไทม์';
-      case 'freelance': return 'ฟรีแลนซ์';
-      case 'internship': return 'ฝึกงาน';
-      default: return 'อื่นๆ';
-    }
-  };
-
-  const filteredItems = useMemo(() => {
-    if (activeCategory === 'ทั้งหมด') return items;
-    return items.filter(j => (j.category || mapLabel(j.jobType)) === activeCategory);
-  }, [items, activeCategory]);
+  // No query-param sync; simple category UI only
 
   return (
     <div className="min-h-screen bg-white pb-20">
@@ -111,10 +90,10 @@ const JobFeed = () => {
             <div className="text-center text-gray-500 py-8">กำลังโหลดงาน...</div>
           ) : (
             <div className="flex flex-col gap-4">
-              {filteredItems.length === 0 ? (
+              {items.length === 0 ? (
                 <div className="text-center text-gray-500 py-8">ยังไม่มีงาน</div>
               ) : (
-                filteredItems.map((job) => (
+                items.map((job) => (
                   <Card
                     key={job.id}
                     className="rounded-2xl border-none bg-gray-50 overflow-hidden shadow-sm cursor-pointer"
