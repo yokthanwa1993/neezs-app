@@ -237,10 +237,11 @@ const SeekerHome = () => {
                                             </span>
                                             <span className="text-[11px] text-gray-500 truncate">
                                                 {(() => {
-                                                    const dt = formatDateTime((job as any).createdAt);
-                                                    const employer = (job as any)?.employerName || (job as any)?.employerId || '';
-                                                    const parts = [dt, employer ? `นายจ้าง: ${employer}` : ''].filter(Boolean);
-                                                    return parts.join(' • ');
+                                                    const d = (job as any)?.createdAt ? toDate((job as any).createdAt) : null;
+                                                    if (!d || isNaN(d.getTime())) return '';
+                                                    const dateStr = d.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: '2-digit' });
+                                                    const timeStr = d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+                                                    return `วันที่ ${dateStr} เวลา ${timeStr}`;
                                                 })()}
                                             </span>
                                         </div>
