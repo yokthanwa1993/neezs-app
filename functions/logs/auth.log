@@ -22890,3 +22890,379 @@
   "initialState": "CLOSED"
 }
 [2025-09-05T11:16:29.166Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:17:55.761Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:17:55.761Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:17:55.760Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:55.760Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:55.760Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:55.760Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:59.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:59.164Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:59.164Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:59.164Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:17:59.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:17:59.164Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:09.164Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:09.164Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:09.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:09.164Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:09.164Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:09.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:19.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:19.165Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:19.165Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:19.167Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:19.166Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:19.166Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:29.165Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:29.167Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:29.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:29.166Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:29.168Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:29.167Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:39.164Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:39.164Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:39.165Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:39.165Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:39.165Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:39.165Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:49.169Z] [INFO] SeekerLayout: Rendering AppLayout with footer
+[2025-09-05T11:18:49.165Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:49.169Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:49.168Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:49.167Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:49.168Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:59.167Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:59.167Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:59.165Z] [INFO] AuthCircuitBreaker: Initialized for FirebaseAuth
+{
+  "config": {
+    "failureThreshold": 5,
+    "recoveryTimeout": 30000,
+    "monitoringPeriod": 60000,
+    "successThreshold": 2
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:59.168Z] [INFO] SeekerLayout: Component rendered
+{
+  "user": "U02f6b0bddecc784194b65a1aa1583211 (null)",
+  "isAuthenticated": true,
+  "isLoading": false
+}
+[2025-09-05T11:18:59.166Z] [INFO] AuthCircuitBreaker: Initialized for LINE LIFF
+{
+  "config": {
+    "failureThreshold": 3,
+    "recoveryTimeout": 15000,
+    "monitoringPeriod": 30000,
+    "successThreshold": 1
+  },
+  "initialState": "CLOSED"
+}
+[2025-09-05T11:18:59.168Z] [INFO] SeekerLayout: Rendering AppLayout with footer
