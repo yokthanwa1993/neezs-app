@@ -231,13 +231,20 @@ const SeekerHome = () => {
                                 <CardContent className="p-3">
                                     <h3 className="font-semibold text-gray-900 truncate">{job.title}</h3>
                                     <p className="text-sm text-gray-500 mt-1 truncate">{job.location || '-'}</p>
-                                    <p className="text-xs text-gray-400 mt-0.5">
-                                        {formatDateTime((job as any).createdAt) ? `ลงประกาศ ${formatDateTime((job as any).createdAt)}` : ''}
-                                    </p>
                                     <div className="flex justify-between items-center mt-3">
-                                        <span className="text-lg font-bold text-green-600">
-                                            {typeof job.salary === 'number' ? `฿${job.salary.toLocaleString('th-TH')}` : ''}
-                                        </span>
+                                        <div className="flex items-baseline gap-2 min-w-0">
+                                            <span className="text-lg font-bold text-green-600 whitespace-nowrap">
+                                                {typeof job.salary === 'number' ? `฿${job.salary.toLocaleString('th-TH')}` : ''}
+                                            </span>
+                                            <span className="text-[11px] text-gray-500 truncate">
+                                                {(() => {
+                                                    const dt = formatDateTime((job as any).createdAt);
+                                                    const employer = (job as any)?.employerName || (job as any)?.employerId || '';
+                                                    const parts = [dt, employer ? `นายจ้าง: ${employer}` : ''].filter(Boolean);
+                                                    return parts.join(' • ');
+                                                })()}
+                                            </span>
+                                        </div>
                                         <Button size="sm" className="bg-primary text-white hover:bg-primary/90 rounded-lg text-xs px-4 py-2 h-auto">
                                             สมัคร
                                         </Button>
