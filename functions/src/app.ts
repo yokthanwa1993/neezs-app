@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import './firebase';
+import { getAllowedOrigins } from './utils/domains';
 import authRoutes from './routes/auth';
 import jobRoutes from './routes/jobs';
 import seekerRoutes from './routes/seekers';
@@ -10,27 +11,22 @@ import logRoutes from './routes/logs';
 
 const app = express();
 
-// Permissive CORS for GitHub Codespaces debugging
+// Centralized CORS using BASE_DOMAIN-derived origins
 app.use((req, res, next) => {
-  console.log(`[CORS] Received request: ${req.method} ${req.path}`);
-  console.log(`[CORS] Origin: ${req.headers.origin}`);
-  console.log(`[CORS] Referer: ${req.headers.referer}`);
-  
-  // For debugging: Allow ALL origins temporarily
-  const origin = req.headers.origin || req.headers.referer || '*';
-  console.log(`[CORS] Setting Access-Control-Allow-Origin to: ${origin}`);
-  
-  res.setHeader('Access-Control-Allow-Origin', origin);
+  const allowList = getAllowedOrigins();
+  const origin = (req.headers.origin as string | undefined) || undefined;
+  const referer = (req.headers.referer as string | undefined) || undefined;
+  const candidate = origin || (referer ? referer.replace(/\/$/, '') : undefined);
+
+  if (candidate && allowList.some((o) => candidate.startsWith(o))) {
+    res.setHeader('Access-Control-Allow-Origin', origin || candidate);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-  // Handle preflight
-  if (req.method === 'OPTIONS') {
-    console.log('[CORS] Responding to preflight request with 204');
-    return res.sendStatus(204);
-  }
-
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 
@@ -56,5 +52,4 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 export default app;
-
 
