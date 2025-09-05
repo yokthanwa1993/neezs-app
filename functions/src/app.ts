@@ -38,7 +38,8 @@ app.use((req, res, next) => {
   if (contentType.startsWith('multipart/form-data')) {
     return next();
   }
-  return express.json()(req, res, next);
+  // Increase JSON body limit to handle data URLs (e.g., image base64 uploads)
+  return express.json({ limit: '20mb' })(req, res, next);
 });
 
 // Routers
