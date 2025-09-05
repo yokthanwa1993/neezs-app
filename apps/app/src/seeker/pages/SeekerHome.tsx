@@ -46,23 +46,8 @@ const SeekerHome = () => {
         user: user ? `${user.uid} (${user.email})` : 'null'
     });
     
-    // All hooks must be called before any conditional returns
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-
-    const onSelect = useCallback(() => {
-        if (!emblaApi) return;
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        onSelect();
-        setScrollSnaps(emblaApi.scrollSnapList());
-        emblaApi.on('select', onSelect);
-        emblaApi.on('reInit', onSelect);
-    }, [emblaApi, onSelect]);
+    // Banner carousel
+    const [emblaRef] = useEmblaCarousel({ loop: true });
 
     const { data, isLoading: listLoading, isFetching } = useQuery({
         queryKey: ['jobs', 20],
