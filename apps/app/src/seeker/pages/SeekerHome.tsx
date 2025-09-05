@@ -78,6 +78,27 @@ const SeekerHome = () => {
         keepPreviousData: true,
     });
 
+    // Derive popular categories (by jobType/category) with counts
+    const popularCategories = (() => {
+        const counts: Record<string, number> = {};
+        const mapLabel = (jt?: string) => {
+            switch ((jt || '').toLowerCase()) {
+                case 'full-time': return 'งานประจำ';
+                case 'part-time': return 'งานพาร์ทไทม์';
+                case 'freelance': return 'ฟรีแลนซ์';
+                case 'internship': return 'ฝึกงาน';
+                default: return 'อื่นๆ';
+            }
+        };
+        (data || []).forEach((j:any) => {
+            const label = j.category || mapLabel(j.jobType);
+            counts[label] = (counts[label] || 0) + 1;
+        });
+        return Object.entries(counts)
+            .sort((a,b) => b[1]-a[1])
+            .slice(0,5);
+    })();
+
     if (authLoading || (listLoading && !data)) {
         return <LoadingScreen title="กำลังเตรียมความพร้อม..." subtitle="กำลังตรวจสอบสถานะและโหลดรายการงาน"/>;
     }
@@ -137,6 +158,35 @@ const SeekerHome = () => {
                             />
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* Popular Jobs */}
+            <section className="px-4 py-2">
+                <div className="bg-white rounded-2xl shadow-md border p-4">
+                    <div className="flex items-center justify-between mb-3">
+                        <h2 className="text-lg font-bold text-gray-800">งานยอดนิยม</h2>
+                        <button onClick={() => navigate('/seeker/jobs')} className="text-sm text-primary font-semibold">ดูทั้งหมด</button>
+                    </div>
+                    {popularCategories.length === 0 ? (
+                        <div className="text-sm text-gray-500">ยังไม่มีข้อมูล</div>
+                    ) : (
+                        <div className="flex flex-col gap-2">
+                            {popularCategories.map(([label, count], idx) => (
+                                <button
+                                    key={label}
+                                    onClick={() => navigate(`/seeker/jobs?category=${encodeURIComponent(String(label))}`)}
+                                    className="flex items-center justify-between w-full p-3 rounded-xl hover:bg-gray-50 border"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-7 h-7 rounded-full bg-amber-400 text-black font-bold flex items-center justify-center">{idx+1}</div>
+                                        <span className="text-gray-800 font-medium">{label}</span>
+                                    </div>
+                                    <span className="text-sm bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">{count} งาน</span>
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
