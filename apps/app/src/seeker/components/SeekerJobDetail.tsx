@@ -53,7 +53,21 @@ const SeekerJobDetail = () => {
     return (
         <div className="bg-white min-h-screen">
             <div className="relative">
-                <EmblaCarousel slides={job.images || []} />
+                {(() => {
+                    const toProxiedImage = (url?: string) => {
+                        if (!url) return url;
+                        try {
+                            const m = url.match(/\/o\/([^?]+)\?/);
+                            if (m && m[1]) {
+                                const path = decodeURIComponent(m[1]);
+                                return `/api/images?path=${encodeURIComponent(path)}`;
+                            }
+                        } catch {}
+                        return url;
+                    };
+                    const slides = (job.images || []).map((u) => toProxiedImage(u) || u);
+                    return <EmblaCarousel slides={slides} />;
+                })()}
                 <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm p-2 rounded-full cursor-pointer" onClick={() => navigate(-1)}>
                     <ArrowLeft className="h-6 w-6 text-gray-800" />
                 </div>

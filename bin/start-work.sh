@@ -27,8 +27,9 @@ if [ -f .env ]; then
     BASE_DOMAIN=${BASE_DOMAIN_LINE#BASE_DOMAIN=}
     BASE_DOMAIN=${BASE_DOMAIN%/}
     # Strip optional quotes
-    BASE_DOMAIN=${BASE_DOMAIN%"}
-    BASE_DOMAIN=${BASE_DOMAIN#"}
+    DQ='"'
+    BASE_DOMAIN=${BASE_DOMAIN%$DQ}
+    BASE_DOMAIN=${BASE_DOMAIN#$DQ}
     echo "[start-work] BASE_DOMAIN detected: ${BASE_DOMAIN}"
     # Normalize to host (drop protocol)
     HOST=${BASE_DOMAIN#http://}

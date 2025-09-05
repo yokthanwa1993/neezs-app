@@ -9,8 +9,9 @@ const router = Router();
 router.get('/', async (req: Request, res: Response) => {
   try {
     const path = req.query.path as string;
-    if (!path || !path.startsWith('uploads/')) {
-      return res.status(400).json({ message: 'A valid storage path starting with "uploads/" is required.' });
+    const allowedPrefixes = ['uploads/', 'jobs/'];
+    if (!path || !allowedPrefixes.some((p) => path.startsWith(p))) {
+      return res.status(400).json({ message: 'A valid storage path starting with one of: "uploads/", "jobs/" is required.' });
     }
 
     const storage = getStorage();

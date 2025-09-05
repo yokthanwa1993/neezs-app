@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
@@ -10,6 +10,8 @@ import {
   InputOTPSlot,
   InputOTPSeparator,
 } from "@/shared/components/ui/input-otp";
+import { RecaptchaVerifier, linkWithPhoneNumber, signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
+import { seekerAuth } from '../../lib/seekerFirebase';
 
 const SeekerOtpVerification: React.FC = () => {
     const navigate = useNavigate();
@@ -20,6 +22,10 @@ const SeekerOtpVerification: React.FC = () => {
     const [step, setStep] = useState<'phone' | 'otp'>('phone');
     const [error, setError] = useState<string>('');
     const [resendIn, setResendIn] = useState<number>(0);
+    const [sending, setSending] = useState(false);
+    const [verifying, setVerifying] = useState(false);
+    const confirmationRef = useRef<ConfirmationResult | null>(null);
+    const recaptchaRef = useRef<RecaptchaVerifier | null>(null);
 
     const isValidPhone = useMemo(() => phone.replace(/\D/g, '').length === 10, [phone]);
     const isValidOtp = useMemo(() => otp.length === 6, [otp]);
@@ -33,22 +39,59 @@ const SeekerOtpVerification: React.FC = () => {
         return [p1, p2, p3].filter(Boolean).join(' ');
     };
 
-    const handleSendOtp = () => {
+    const ensureRecaptcha = () => {
+        if (recaptchaRef.current) return recaptchaRef.current;
+        recaptchaRef.current = new RecaptchaVerifier(seekerAuth, 'recaptcha-container', { size: 'invisible' });
+        return recaptchaRef.current;
+    };
+
+    const toE164TH = (local: string) => {
+        const d = local.replace(/\D/g, '').slice(0, 10);
+        if (d.length === 10 && d.startsWith('0')) return `+66${d.slice(1)}`;
+        if (/^\+?66\d{8,9}$/.test(local)) return local.startsWith('+') ? local : `+${local}`;
+        return `+66${d}`;
+    };
+
+    const handleSendOtp = async () => {
         const digits = phone.replace(/\D/g, '');
         if (digits.length !== 10) {
             setError('กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก');
             return;
         }
         setError('');
-        console.log(`Sending OTP to ${digits} for job ${jobId}`);
-        setStep('otp');
-        setResendIn(30);
+        setSending(true);
+        try {
+            const appVerifier = ensureRecaptcha();
+            const phoneNumber = toE164TH(digits);
+            if (seekerAuth.currentUser) {
+                confirmationRef.current = await linkWithPhoneNumber(seekerAuth.currentUser, phoneNumber, appVerifier);
+            } else {
+                confirmationRef.current = await signInWithPhoneNumber(seekerAuth, phoneNumber, appVerifier);
+            }
+            setStep('otp');
+            setResendIn(30);
+        } catch (e: any) {
+            console.error('Failed to send OTP', e);
+            setError(e?.message || 'ส่งรหัสไม่สำเร็จ โปรดลองอีกครั้ง');
+            try { recaptchaRef.current?.clear(); recaptchaRef.current = null; } catch {}
+        } finally {
+            setSending(false);
+        }
     };
 
-    const handleVerifyOtp = () => {
-        if (!isValidOtp) return;
-        console.log(`Verifying OTP ${otp}`);
-        navigate('/seeker/apply/ekyc-id', { state: { jobId, phone } });
+    const handleVerifyOtp = async () => {
+        if (!isValidOtp || !confirmationRef.current) return;
+        setVerifying(true);
+        try {
+            const credential = await confirmationRef.current.confirm(otp);
+            console.log('✅ Phone verified for uid:', credential.user?.uid);
+            navigate('/seeker/apply/ekyc-id', { state: { jobId, phone } });
+        } catch (e: any) {
+            console.error('Invalid OTP', e);
+            setError('รหัสไม่ถูกต้อง โปรดลองอีกครั้ง');
+        } finally {
+            setVerifying(false);
+        }
     };
 
     // Countdown for resend
@@ -102,6 +145,7 @@ const SeekerOtpVerification: React.FC = () => {
                                             }
                                         }}
                                         className={`h-16 text-2xl pl-16 text-center tracking-widest ${error ? 'border-red-400 focus-visible:ring-red-400' : ''}`}
+                                        disabled={sending}
                                     />
                                 </div>
                                 <div className="mt-2 flex items-center justify-center gap-2 text-xs text-slate-500">
@@ -176,10 +220,12 @@ const SeekerOtpVerification: React.FC = () => {
                         className="flex-1 h-12 text-lg font-bold rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 text-black hover:from-amber-500 hover:to-yellow-600 disabled:opacity-50"
                         disabled={(step === 'phone' && !isValidPhone) || (step === 'otp' && !isValidOtp)}
                     >
-                        {step === 'phone' ? 'ถัดไป' : 'ยืนยัน'}
+                        {step === 'phone' ? (sending ? 'กำลังส่ง...' : 'ถัดไป') : (verifying ? 'กำลังยืนยัน...' : 'ยืนยัน')}
                     </Button>
                 </div>
             </div>
+            {/* Invisible reCAPTCHA container for Firebase Phone Auth */}
+            <div id="recaptcha-container" style={{ position: 'absolute', left: -9999, top: -9999 }} />
         </div>
     );
 };
