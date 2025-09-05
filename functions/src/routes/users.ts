@@ -16,11 +16,15 @@ router.post('/phone-verified', async (req: Request, res: Response) => {
     const db = getDb();
     const decoded = await auth.verifyIdToken(idToken);
     const uid = decoded.uid;
-    await db.collection('users').doc(uid).set({
+    const payload = {
       phoneNumber,
       phoneVerified: true,
       phoneVerifiedAt: new Date(),
-    }, { merge: true });
+    };
+    // Write to primary users collection
+    await db.collection('users').doc(uid).set(payload, { merge: true });
+    // Also mirror to SeekerUsers collection for seeker-specific views
+    await db.collection('SeekerUsers').doc(uid).set(payload, { merge: true });
     return res.status(200).json({ ok: true });
   } catch (error: any) {
     console.error('POST /api/users/phone-verified error:', error);
@@ -29,4 +33,3 @@ router.post('/phone-verified', async (req: Request, res: Response) => {
 });
 
 export default router;
-
