@@ -7,8 +7,8 @@ const router = Router();
 const upload = multer({ 
   storage: multer.memoryStorage(), 
   limits: { 
-    fileSize: 15 * 1024 * 1024,
-    fieldSize: 15 * 1024 * 1024
+    fileSize: 25 * 1024 * 1024,
+    fieldSize: 25 * 1024 * 1024
   },
   fileFilter: (req, file, cb) => {
     // Accept images only
@@ -214,5 +214,4 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 export default router;
-
 

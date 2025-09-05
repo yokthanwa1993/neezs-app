@@ -58,13 +58,14 @@ const SeekerBidPrice: React.FC = () => {
       if (!jobId) throw new Error('Missing jobId in context');
       if (!phone) throw new Error('Missing phone in context');
 
-      // If ID card image is a data URL, upload it to storage via backend helper
+      // If ID card image is a data URL, upload it using multipart/form-data to avoid JSON size limits
       if (idCardImage && idCardImage.startsWith('data:')) {
-        const contentType = idCardImage.substring(5, idCardImage.indexOf(';'));
-        const resp = await fetch('/api/jobs/upload-json', {
+        const blob = await (await fetch(idCardImage)).blob();
+        const form = new FormData();
+        form.append('file', blob, 'idcard.jpg');
+        const resp = await fetch('/api/jobs/upload', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fileBase64: idCardImage, contentType, fileName: 'idcard.jpg' }),
+          body: form,
         });
         if (!resp.ok) {
           const e = await resp.json().catch(() => ({}));
