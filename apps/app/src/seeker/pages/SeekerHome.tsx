@@ -237,8 +237,8 @@ const SeekerHome = () => {
                                             </span>
                                             <span className="text-[11px] text-gray-500 truncate">
                                                 {(() => {
-                                                    const d = (job as any)?.createdAt ? toDate((job as any).createdAt) : null;
-                                                    if (!d || isNaN(d.getTime())) return '';
+                                                    const d0 = (job as any)?.createdAt ? toDate((job as any).createdAt) : null;
+                                                    const d = d0 && !isNaN(d0.getTime()) ? d0 : new Date();
                                                     const dateStr = d.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: '2-digit' });
                                                     const timeStr = d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
                                                     return `วันที่ ${dateStr} เวลา ${timeStr}`;
