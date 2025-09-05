@@ -93,8 +93,12 @@ const SeekerBidPrice: React.FC = () => {
         </div>
       </main>
 
-      <footer className="sticky bottom-0 w-full bg-white/80 backdrop-blur-sm border-t p-4">
-        <div className="max-w-mobile-lg mx-auto flex items-center gap-4">
+      {/* Floating actions above bottom navbar */}
+      <div
+        className="fixed left-1/2 -translate-x-1/2 w-full max-w-mobile-lg px-4 z-40"
+        style={{ bottom: 'calc(env(safe-area-inset-bottom) + 100px)' }}
+      >
+        <div className="flex items-center gap-4">
           <Button
             variant="ghost"
             size="icon"
@@ -111,7 +115,7 @@ const SeekerBidPrice: React.FC = () => {
             {submitting ? 'กำลังส่ง...' : 'ยืนยันราคาและสมัครงาน'}
           </Button>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };
