@@ -365,3 +365,291 @@
 2025-09-05T18:02:23: 2025-09-05T11:02:23Z INF Registered tunnel connection connIndex=2 connection=f53052ae-647a-4ef2-906e-222324e75ed2 event=0 ip=198.41.192.37 location=bkk07 protocol=quic
 2025-09-05T18:02:23: 2025-09-05T11:02:23Z INF Registered tunnel connection connIndex=3 connection=d647008f-76dc-4bf7-b277-956fc2f6cb1c event=0 ip=198.41.200.13 location=sin11 protocol=quic
 2025-09-05T18:02:23: 2025-09-05T11:02:23Z INF Registered tunnel connection connIndex=1 connection=3571b7cd-66c2-47f6-b8d2-e380dcfd9226 event=0 ip=198.41.192.227 location=bkk07 protocol=quic
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Starting tunnel tunnelID=fad92815-0281-494f-8fb4-1daec7ca5c17
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Version 2025.7.0 (Checksum 978c03a1f4662d4773deaf2151f404b6658452fd475f400087e7f38fd85a31b7)
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF GOOS: darwin, GOVersion: go1.24.4, GoArch: arm64
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Settings: map[config:/Users/yok/Development/NEEZS/cloudflared-config.yml cred-file:/Users/yok/.cloudflared/fad92815-0281-494f-8fb4-1daec7ca5c17.json credentials-file:/Users/yok/.cloudflared/fad92815-0281-494f-8fb4-1daec7ca5c17.json no-autoupdate:true]
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Generated Connector ID: 04c112fc-a961-4a8e-91f4-0481e908cf64
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Initial protocol quic
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF ICMP proxy will use 192.168.31.71 as source for IPv4
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF ICMP proxy will use fe80::4a5:2fc5:6eab:ea4a in zone en0 as source for IPv6
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Created ICMP proxy listening on 192.168.31.71:0
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF ICMP proxy will use 192.168.31.71 as source for IPv4
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF ICMP proxy will use fe80::4a5:2fc5:6eab:ea4a in zone en0 as source for IPv6
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Starting metrics server on 127.0.0.1:20241/metrics
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Registered tunnel connection connIndex=0 connection=d46c9746-4b48-4fa7-af15-263f8fee7bed event=0 ip=198.41.200.73 location=sin11 protocol=quic
+2025-09-05T20:53:33: 2025-09-05T13:53:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:53:34: 2025-09-05T13:53:34Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-09-05T20:53:35: 2025-09-05T13:53:35Z INF Registered tunnel connection connIndex=2 connection=0fc4fcce-5f26-4e67-8ed2-f24e5664ef10 event=0 ip=198.41.200.193 location=sin11 protocol=quic
+2025-09-05T20:53:35: 2025-09-05T13:53:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.47
+2025-09-05T20:53:38: 2025-09-05T13:53:38Z WRN Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:53:38: 2025-09-05T13:53:38Z INF Retrying connection in up to 2s connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:53:38: 2025-09-05T13:53:38Z INF Registered tunnel connection connIndex=3 connection=9c714a0f-c538-4815-8564-42cd046dba7a event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-05T20:53:40: 2025-09-05T13:53:40Z WRN Connection terminated error="context canceled" connIndex=1
+2025-09-05T20:53:55: 2025-09-05T13:53:55Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:53:55: 2025-09-05T13:53:55Z INF Registered tunnel connection connIndex=1 connection=5c9c45ce-08e9-4406-99e5-408eebc29811 event=0 ip=198.41.192.167 location=bkk07 protocol=quic
+2025-09-05T20:57:00: 2025-09-05T13:57:00Z INF Initiating graceful shutdown due to signal interrupt ...
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.73
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.73
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z ERR Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.167
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z ERR Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.200.193
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.193
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z ERR Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.192.47
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.47
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z ERR no more connections active and exiting
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Tunnel server stopped
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF icmp router terminated error="read udp 192.168.31.71:0: raw-read udp 192.168.31.71:0: use of closed network connection"
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Metrics server stopped
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Starting tunnel tunnelID=fad92815-0281-494f-8fb4-1daec7ca5c17
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Version 2025.7.0 (Checksum 978c03a1f4662d4773deaf2151f404b6658452fd475f400087e7f38fd85a31b7)
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF GOOS: darwin, GOVersion: go1.24.4, GoArch: arm64
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Settings: map[config:/Users/yok/Development/NEEZS/cloudflared-config.yml cred-file:/Users/yok/.cloudflared/fad92815-0281-494f-8fb4-1daec7ca5c17.json credentials-file:/Users/yok/.cloudflared/fad92815-0281-494f-8fb4-1daec7ca5c17.json no-autoupdate:true]
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Generated Connector ID: b86af986-641c-4a74-abc9-671b15fd82f1
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Initial protocol quic
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF ICMP proxy will use 192.168.31.71 as source for IPv4
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF ICMP proxy will use fe80::4a5:2fc5:6eab:ea4a in zone en0 as source for IPv6
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Created ICMP proxy listening on 192.168.31.71:0
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF ICMP proxy will use 192.168.31.71 as source for IPv4
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF ICMP proxy will use fe80::4a5:2fc5:6eab:ea4a in zone en0 as source for IPv6
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Starting metrics server on 127.0.0.1:20241/metrics
+2025-09-05T20:57:01: 2025-09-05T13:57:01Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T20:57:02: 2025-09-05T13:57:02Z INF Registered tunnel connection connIndex=0 connection=42349fce-13e0-41f0-ade5-13e738c6fe46 event=0 ip=198.41.200.53 location=sin11 protocol=quic
+2025-09-05T20:57:02: 2025-09-05T13:57:02Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T20:57:02: 2025-09-05T13:57:02Z INF Registered tunnel connection connIndex=1 connection=34eb542e-2629-46c9-9658-2768bdb66df8 event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-05T20:57:03: 2025-09-05T13:57:03Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T20:57:04: 2025-09-05T13:57:04Z INF Registered tunnel connection connIndex=2 connection=fbf4144e-e3c9-4afd-80c0-131fe16f4cc4 event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-05T20:57:04: 2025-09-05T13:57:04Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T20:57:05: 2025-09-05T13:57:05Z INF Registered tunnel connection connIndex=3 connection=74e4d234-c9e5-4565-b0b5-dbccb45149a0 event=0 ip=198.41.200.193 location=sin07 protocol=quic
+2025-09-05T20:58:16: 2025-09-05T13:58:16Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:3010: connect: connection refused" connIndex=3 event=1 ingressRule=1 originService=http://127.0.0.1:3010
+2025-09-05T20:58:16: 2025-09-05T13:58:16Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:3010: connect: connection refused" connIndex=3 dest=https://web.wwoom.com/ event=0 ip=198.41.200.193 type=http
+2025-09-05T20:58:18: 2025-09-05T13:58:18Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:3010: connect: connection refused" connIndex=3 event=1 ingressRule=1 originService=http://127.0.0.1:3010
+2025-09-05T20:58:18: 2025-09-05T13:58:18Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:3010: connect: connection refused" connIndex=3 dest=https://web.wwoom.com/ event=0 ip=198.41.200.193 type=http
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z WRN Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:25:30: 2025-09-05T14:25:30Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:25:31: 2025-09-05T14:25:31Z ERR Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:25:31: 2025-09-05T14:25:31Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:25:31: 2025-09-05T14:25:31Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2
+2025-09-05T21:25:31: 2025-09-05T14:25:31Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3
+2025-09-05T21:25:32: 2025-09-05T14:25:32Z ERR Connection terminated error="context canceled" connIndex=0
+2025-09-05T21:25:32: 2025-09-05T14:25:32Z ERR Connection terminated error="context canceled" connIndex=1
+2025-09-05T21:25:33: 2025-09-05T14:25:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:25:33: 2025-09-05T14:25:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:25:33: 2025-09-05T14:25:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:25:33: 2025-09-05T14:25:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:25:33: 2025-09-05T14:25:33Z INF Registered tunnel connection connIndex=3 connection=9fb4c6df-996f-4f97-bff4-f43ebaa6c726 event=0 ip=198.41.200.193 location=sin07 protocol=quic
+2025-09-05T21:25:34: 2025-09-05T14:25:34Z INF Registered tunnel connection connIndex=2 connection=af269775-692d-4e98-8ed4-59ab8a1d9f13 event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-05T21:25:34: 2025-09-05T14:25:34Z INF Registered tunnel connection connIndex=1 connection=7025aa9f-639c-4e57-a34d-cea6e21876c9 event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-05T21:25:34: 2025-09-05T14:25:34Z INF Registered tunnel connection connIndex=0 connection=6fe5be92-3c4e-4e2c-ab93-4e0853be280a event=0 ip=198.41.200.53 location=sin11 protocol=quic
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z WRN Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z WRN Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z WRN Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:41:23: 2025-09-05T14:41:23Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:41:24: 2025-09-05T14:41:24Z WRN Connection terminated error="context canceled" connIndex=3
+2025-09-05T21:41:24: 2025-09-05T14:41:24Z ERR Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:41:24: 2025-09-05T14:41:24Z ERR Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:41:24: 2025-09-05T14:41:24Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:41:25: 2025-09-05T14:41:25Z ERR Connection terminated error="context canceled" connIndex=0
+2025-09-05T21:41:25: 2025-09-05T14:41:25Z ERR Connection terminated error="context canceled" connIndex=2
+2025-09-05T21:41:25: 2025-09-05T14:41:25Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1
+2025-09-05T21:41:36: 2025-09-05T14:41:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T21:41:36: 2025-09-05T14:41:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T21:41:36: 2025-09-05T14:41:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T21:41:36: 2025-09-05T14:41:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T21:41:36: 2025-09-05T14:41:36Z INF Registered tunnel connection connIndex=1 connection=900252b8-34be-4bfd-b8ad-b6e435f782a0 event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-05T21:41:37: 2025-09-05T14:41:37Z INF Registered tunnel connection connIndex=3 connection=38b4dd60-193c-41c2-8da7-3b07fa96b3be event=0 ip=198.41.200.193 location=sin07 protocol=quic
+2025-09-05T21:41:37: 2025-09-05T14:41:37Z INF Registered tunnel connection connIndex=0 connection=26684dd6-313e-491d-9334-c1bc776caca7 event=0 ip=198.41.200.53 location=sin11 protocol=quic
+2025-09-05T21:41:37: 2025-09-05T14:41:37Z INF Registered tunnel connection connIndex=2 connection=1f65df8a-510c-4db0-be82-67d1edb144fe event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Connection terminated error="context canceled" connIndex=0
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Connection terminated error="context canceled" connIndex=3
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z WRN Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z ERR Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T22:00:29: 2025-09-05T15:00:29Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T22:00:31: 2025-09-05T15:00:31Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2
+2025-09-05T22:00:31: 2025-09-05T15:00:31Z ERR Connection terminated error="context canceled" connIndex=1
+2025-09-05T22:00:35: 2025-09-05T15:00:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-05T22:00:35: 2025-09-05T15:00:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-05T22:00:35: 2025-09-05T15:00:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.53
+2025-09-05T22:00:35: 2025-09-05T15:00:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.193
+2025-09-05T22:00:36: 2025-09-05T15:00:36Z INF Registered tunnel connection connIndex=2 connection=c3d6b7d3-f6c1-4ab0-9b7a-7d9e29bfaf28 event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-05T22:00:36: 2025-09-05T15:00:36Z INF Registered tunnel connection connIndex=1 connection=61d412ea-a6cf-47cd-92f8-09e1272612ff event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-05T22:00:36: 2025-09-05T15:00:36Z INF Registered tunnel connection connIndex=0 connection=aed5acd9-fa20-4954-a269-1fbbf36294f0 event=0 ip=198.41.200.53 location=sin11 protocol=quic
+2025-09-05T22:00:36: 2025-09-05T15:00:36Z INF Registered tunnel connection connIndex=3 connection=6adf61a1-037c-4fae-82ce-c86b9fa91f29 event=0 ip=198.41.200.193 location=sin07 protocol=quic
+2025-09-05T22:39:36: 2025-09-05T15:39:36Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T22:39:36: 2025-09-05T15:39:36Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/ event=0 ip=198.41.192.57 type=ws
+2025-09-05T22:51:43: 2025-09-05T15:51:43Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T22:51:43: 2025-09-05T15:51:43Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 dest=https://app.wwoom.com/ event=0 ip=198.41.200.193 type=ws
+2025-09-05T22:55:22: 2025-09-05T15:55:22Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T22:55:22: 2025-09-05T15:55:22Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-05T22:59:38: 2025-09-05T15:59:38Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T22:59:38: 2025-09-05T15:59:38Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 dest=https://app.wwoom.com/ event=0 ip=198.41.192.47 type=ws
+2025-09-05T23:03:06: 2025-09-05T16:03:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:03:06: 2025-09-05T16:03:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-05T23:21:31: 2025-09-05T16:21:31Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:21:31: 2025-09-05T16:21:31Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-05T23:21:31: 2025-09-05T16:21:31Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:21:31: 2025-09-05T16:21:31Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/ event=0 ip=198.41.192.57 type=ws
+2025-09-05T23:24:27: 2025-09-05T16:24:27Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:24:27: 2025-09-05T16:24:27Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 dest=https://app.wwoom.com/ event=0 ip=198.41.200.193 type=ws
+2025-09-05T23:30:01: 2025-09-05T16:30:01Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:30:01: 2025-09-05T16:30:01Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 dest=https://app.wwoom.com/ event=0 ip=198.41.200.193 type=ws
+2025-09-05T23:48:43: 2025-09-05T16:48:43Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:48:43: 2025-09-05T16:48:43Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 dest=https://app.wwoom.com/ event=0 ip=198.41.200.193 type=ws
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:52:06: 2025-09-05T16:52:06Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.57 type=http
+2025-09-05T23:57:13: 2025-09-05T16:57:13Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:57:13: 2025-09-05T16:57:13Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-05T23:59:50: 2025-09-05T16:59:50Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-05T23:59:50: 2025-09-05T16:59:50Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-06T00:01:03: 2025-09-05T17:01:03Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:01:03: 2025-09-05T17:01:03Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:36: 2025-09-05T17:10:36Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:10:42: 2025-09-05T17:10:42Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.200.53 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.200.53 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.200.53 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.200.53 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.200.53 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:27:22: 2025-09-05T17:27:22Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T00:30:27: 2025-09-05T17:30:27Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:30:27: 2025-09-05T17:30:27Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-06T00:32:49: 2025-09-05T17:32:49Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:32:49: 2025-09-05T17:32:49Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 dest=https://app.wwoom.com/ event=0 ip=198.41.192.47 type=ws
+2025-09-06T00:39:49: 2025-09-05T17:39:49Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:39:49: 2025-09-05T17:39:49Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=3 dest=https://app.wwoom.com/ event=0 ip=198.41.200.193 type=ws
+2025-09-06T00:43:01: 2025-09-05T17:43:01Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:43:01: 2025-09-05T17:43:01Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=0 dest=https://app.wwoom.com/ event=0 ip=198.41.200.53 type=ws
+2025-09-06T00:54:44: 2025-09-05T17:54:44Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T00:54:44: 2025-09-05T17:54:44Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=1 dest=https://app.wwoom.com/ event=0 ip=198.41.192.47 type=ws
+2025-09-06T01:00:50: 2025-09-05T18:00:50Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:00:50: 2025-09-05T18:00:50Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/ event=0 ip=198.41.192.57 type=ws
+2025-09-06T01:03:43: 2025-09-05T18:03:43Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:03:43: 2025-09-05T18:03:43Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: dial tcp 127.0.0.1:5003: connect: connection refused" connIndex=2 dest=https://app.wwoom.com/ event=0 ip=198.41.192.57 type=ws
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z WRN Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:15:31: 2025-09-05T18:15:31Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:15:32: 2025-09-05T18:15:32Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=2
+2025-09-06T01:15:32: 2025-09-05T18:15:32Z ERR Connection terminated error="context canceled" connIndex=0
+2025-09-06T01:15:32: 2025-09-05T18:15:32Z ERR Connection terminated error="context canceled" connIndex=3
+2025-09-06T01:15:33: 2025-09-05T18:15:33Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Registered tunnel connection connIndex=3 connection=17afd6ab-9b20-4287-8efd-b62ff2b76904 event=0 ip=198.41.200.193 location=sin07 protocol=quic
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Registered tunnel connection connIndex=0 connection=cc131955-4a12-4f69-9cdd-28816904394e event=0 ip=198.41.200.53 location=sin11 protocol=quic
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Registered tunnel connection connIndex=1 connection=2f7da263-e841-49f5-86de-45629faea9f0 event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-06T01:15:42: 2025-09-05T18:15:42Z INF Registered tunnel connection connIndex=2 connection=e17042d1-69ef-4e7d-ac35-1f233b26e35f event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-06T01:21:04: 2025-09-05T18:21:04Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:21:04: 2025-09-05T18:21:04Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:21:04: 2025-09-05T18:21:04Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:21:04: 2025-09-05T18:21:04Z WRN Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:21:04: 2025-09-05T18:21:04Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.200.193
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z WRN Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=1
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z ERR Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z ERR Serve tunnel error error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:21:05: 2025-09-05T18:21:05Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.53
+2025-09-06T01:21:06: 2025-09-05T18:21:06Z ERR Connection terminated error="timeout: no recent network activity" connIndex=0
+2025-09-06T01:21:06: 2025-09-05T18:21:06Z ERR Connection terminated error="timeout: no recent network activity" connIndex=3
+2025-09-06T01:21:06: 2025-09-05T18:21:06Z ERR Connection terminated error="context canceled" connIndex=2
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.23
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.200.63
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.47
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.192.57
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Registered tunnel connection connIndex=3 connection=c7aef3a3-3049-4d47-8ecb-bcab2ba281bc event=0 ip=198.41.200.63 location=sin02 protocol=quic
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Registered tunnel connection connIndex=0 connection=e1d719dd-25ca-4eaa-b9dd-1b70891a9c11 event=0 ip=198.41.200.23 location=sin15 protocol=quic
+2025-09-06T01:21:23: 2025-09-05T18:21:23Z INF Registered tunnel connection connIndex=2 connection=4098dcc7-f964-404c-bf37-94ff4efeb8aa event=0 ip=198.41.192.57 location=bkk07 protocol=quic
+2025-09-06T01:21:24: 2025-09-05T18:21:24Z INF Registered tunnel connection connIndex=1 connection=cc6c0015-6203-4922-9379-a9f3ecc81224 event=0 ip=198.41.192.47 location=bkk07 protocol=quic
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://127.0.0.1:5003
+2025-09-06T01:31:46: 2025-09-05T18:31:46Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://app.wwoom.com/api/logs/write event=0 ip=198.41.192.47 type=http
