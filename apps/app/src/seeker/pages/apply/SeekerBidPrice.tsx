@@ -1,15 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { ArrowLeft } from 'lucide-react';
 import { seekerAuth } from '../../lib/seekerFirebase';
+import { apiClient } from '@neeiz/api-client';
+
+type JobDetail = {
+  id: string;
+  title: string;
+  salary?: number;
+};
 
 const SeekerBidPrice: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [price, setPrice] = useState<string>('');
   const [submitting, setSubmitting] = useState(false);
+  const [job, setJob] = useState<JobDetail | null>(null);
+  const state = (location.state || {}) as any;
+  const jobId = state?.jobId as string | undefined;
+  const startingPrice = typeof job?.salary === 'number' ? job!.salary : undefined;
+
+  useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        if (!jobId) return;
+        const res = await apiClient.get(`/api/jobs/${jobId}`);
+        const j = res.data as JobDetail;
+        setJob(j);
+        // Prefill price once if empty and job has salary
+        if (!price && typeof j?.salary === 'number') {
+          setPrice(String(j.salary));
+        }
+      } catch (e) {
+        // silent; user can still input price manually
+      }
+    };
+    fetchJob();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jobId]);
 
   const isValid = price.trim() !== '' && !Number.isNaN(Number(price)) && Number(price) > 0;
 
@@ -86,10 +116,16 @@ const SeekerBidPrice: React.FC = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               className="h-12 text-lg"
+              min={startingPrice !== undefined ? startingPrice : undefined}
             />
             <span className="text-gray-600">บาท</span>
           </div>
-          <p className="text-[11px] text-gray-500 mt-2">เคล็ดลับ: ตั้งราคาให้เหมาะกับประสบการณ์และระยะเวลา</p>
+          <div className="mt-2 text-xs text-gray-600 flex items-center justify-between">
+            <span>เคล็ดลับ: ตั้งราคาให้เหมาะกับประสบการณ์และระยะเวลา</span>
+            {startingPrice !== undefined && (
+              <span className="font-semibold text-gray-800">ราคาเริ่มต้น: ฿{startingPrice.toLocaleString('th-TH')}</span>
+            )}
+          </div>
         </div>
       </main>
 
