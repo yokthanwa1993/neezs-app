@@ -4,7 +4,7 @@ set -euo pipefail
 # Simple start script for daily work
 # - Ensures Node 20 via nvm
 # - Installs deps with pnpm (using npx fallback to avoid corepack quirks)
-# - Starts all processes with pm2 (API, Web, Frontend, Cloudflare tunnel)
+# - Starts all processes with pm2 (API, Web, Frontend)
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -84,7 +84,7 @@ pm2 restart all || true
 echo "[start-work] pm2 status:"
 pm2 status
 
-echo "[start-work] Endpoints:"
-echo "  - App (Vite):   https://app.wwoom.com"
-echo "  - Web (Next):   https://web.wwoom.com"
-echo "  - API:          https://api.wwoom.com/api"
+echo "[start-work] Endpoints (local/Codespaces forwarded):"
+echo "  - App (Vite):   http://localhost:5000"
+echo "  - Web (Next):   http://localhost:3010"
+echo "  - API:          http://localhost:8000/api"
