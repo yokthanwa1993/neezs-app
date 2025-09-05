@@ -1,1 +1,29 @@
 node_modules
+
+# Package manager caches
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+
+# Next.js
+.next/
+apps/web/.next/
+
+# Logs
+logs/
+apps/web/logs/
+apps/app/logs/
+functions/logs/
+
+# Env files
+.env.local
+apps/web/.env.local
+apps/app/.env.local
+
+# PM2
+.pm2/
+
+# OS files
+.DS_Store
