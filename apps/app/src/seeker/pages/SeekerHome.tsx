@@ -185,15 +185,7 @@ const SeekerHome = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center">
-                        {scrollSnaps.map((_, index) => (
-                            <DotButton
-                                key={index}
-                                selected={index === selectedIndex}
-                                onClick={() => emblaApi && emblaApi.scrollTo(index)}
-                            />
-                        ))}
-                    </div>
+                    {/* Removed dot indicators */}
                 </div>
             </section>
 
