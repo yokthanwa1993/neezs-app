@@ -5,6 +5,7 @@ import { Button } from '@/shared/components/ui/button';
 import EmblaCarousel from '@/shared/components/EmblaCarousel';
 import { apiClient } from '@neeiz/api-client';
 import { useSeekerAuth } from '../contexts/SeekerAuthContext';
+import { apiClient } from '@neeiz/api-client';
 
 type JobDetail = {
     id: string;
@@ -102,18 +103,30 @@ const SeekerJobDetail = () => {
                     </div>
                     <Button 
                         className="h-12 text-lg font-semibold bg-primary text-white hover:bg-primary/90 rounded-lg px-4"
-                        onClick={() => {
-                            const phoneE164 = user?.phoneNumber || '';
-                            const toLocal10 = (e164?: string) => {
-                                if (!e164) return '';
-                                if (e164.startsWith('+66')) return '0' + e164.slice(3);
-                                return e164;
-                            };
-                            const localPhone = toLocal10(phoneE164);
-                            if (user && user.phoneNumber) {
-                                // Phone already verified; skip OTP and proceed to eKYC
-                                navigate('/seeker/apply/ekyc-id', { state: { jobId: job.id, phone: localPhone } });
-                            } else {
+                        onClick={async () => {
+                            try {
+                                const idToken = await (await import('firebase/auth')).getIdToken((user as any) || undefined as any).catch(()=>null);
+                                // Prefer backend status from SeekerUsers
+                                const token = await (user as any)?.getIdToken?.(true).catch(()=>null);
+                                const resp = await fetch('/api/users/me', {
+                                    headers: {
+                                        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+                                    },
+                                    credentials: 'include',
+                                });
+                                let status: any = { exists: false, phoneVerified: false, phoneNumber: null };
+                                if (resp.ok) status = await resp.json();
+                                const toLocal10 = (e164?: string) => {
+                                    if (!e164) return '';
+                                    if (e164.startsWith('+66')) return '0' + e164.slice(3);
+                                    return e164;
+                                };
+                                if (status.exists && status.phoneVerified && status.phoneNumber) {
+                                    navigate('/seeker/apply/ekyc-id', { state: { jobId: job.id, phone: toLocal10(status.phoneNumber) } });
+                                } else {
+                                    navigate('/seeker/apply/otp', { state: { jobId: job.id } });
+                                }
+                            } catch {
                                 navigate('/seeker/apply/otp', { state: { jobId: job.id } });
                             }
                         }}
