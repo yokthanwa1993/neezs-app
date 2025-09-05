@@ -11,8 +11,7 @@ import {
   InputOTPSeparator,
 } from "@/shared/components/ui/input-otp";
 import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, PhoneAuthProvider, linkWithCredential, updatePhoneNumber, signInWithCredential } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { seekerAuth, seekerDb } from '../../lib/seekerFirebase';
+import { seekerAuth } from '../../lib/seekerFirebase';
 
 const SeekerOtpVerification: React.FC = () => {
     const navigate = useNavigate();
@@ -100,18 +99,19 @@ const SeekerOtpVerification: React.FC = () => {
                 uid = res.user?.uid;
             }
             console.log('✅ Phone verified for uid:', uid);
-            // Persist verification status to Firestore user profile
+            // Persist verification status via backend (Admin SDK) to avoid client Firestore rule issues
             try {
                 const e164 = toE164TH(phone);
-                await setDoc(
-                    doc(seekerDb, 'users', uid || 'unknown'),
-                    {
-                        phoneNumber: e164,
-                        phoneVerified: true,
-                        phoneVerifiedAt: new Date().toISOString(),
+                const idToken = await seekerAuth.currentUser?.getIdToken(true);
+                await fetch('/api/users/phone-verified', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
                     },
-                    { merge: true }
-                );
+                    body: JSON.stringify({ phoneNumber: e164, idToken }),
+                    credentials: 'include',
+                });
             } catch (persistErr) {
                 console.warn('⚠️ Failed to persist phone verification status:', persistErr);
             }
