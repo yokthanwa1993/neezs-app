@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/components/ui/button';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import useEmblaCarousel from 'embla-carousel-react';
-import { DotButton } from '@/shared/components/EmblaCarouselButtons';
 import { useSeekerAuth } from '../contexts/SeekerAuthContext';
 import { logger } from '@/shared/utils/logger';
 import { apiClient } from '@neeiz/api-client';
