@@ -106,6 +106,10 @@ const EmployerJobApplicants: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50/50">
             <header className="bg-white border-b sticky top-0 z-10">
+                <div className="max-w-mobile-lg mx-auto px-4 sm:px-6 lg:px-4 py-3">
+                    <h1 className="text-base font-semibold text-gray-900 dark:text-gray-50">ผู้สมัครงาน</h1>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">รายการผู้สมัครที่ส่งเข้ามาสำหรับงานของคุณ</p>
+                </div>
             </header>
             <main className="max-w-mobile-lg mx-auto px-4 sm:px-6 lg:px-4 py-6 pb-24">
                 <div className="space-y-2">
