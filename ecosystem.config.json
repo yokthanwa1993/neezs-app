@@ -3,7 +3,7 @@
     {
       "name": "neezs-backend",
       "cwd": "./functions",
-      "script": "npm",
+      "script": "pnpm",
       "args": "run dev",
       "env": {
         "NODE_ENV": "development",
@@ -19,8 +19,8 @@
     {
       "name": "neezs-frontend",
       "cwd": "./apps/app",
-      "script": "/Users/yok/.nvm/versions/node/v20.19.5/bin/node",
-      "args": "node_modules/vite/bin/vite.js --strictPort --port 5003 --host 0.0.0.0",
+      "script": "pnpm",
+      "args": "run dev:frontend",
       "interpreter": "none",
       "env": {
         "NODE_ENV": "development",
@@ -35,8 +35,8 @@
     {
       "name": "neezs-web",
       "cwd": "./apps/web",
-      "script": "npm",
-      "args": "run dev -- -p 3010",
+      "script": "pnpm",
+      "args": "run dev -- . -p 3010",
       "env": {
         "NODE_ENV": "development",
         "PORT": "3010"
@@ -45,20 +45,6 @@
       "log_file": "./logs/web.log",
       "error_file": "./logs/web-error.log",
       "out_file": "./logs/web-out.log",
-      "time": true
-    },
-    {
-      "name": "cloudflared-tunnel",
-      "cwd": ".",
-      "script": "bin/cloudflared-run.sh",
-      "interpreter": "none",
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "watch": false,
-      "log_file": "./logs/cloudflared.log",
-      "error_file": "./logs/cloudflared-error.log",
-      "out_file": "./logs/cloudflared-out.log",
       "time": true
     }
   ]
