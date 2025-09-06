@@ -8,17 +8,18 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "0.0.0.0",
     port: 5173,
-    // Allow access via Cloudflare Tunnel custom domains
-    allowedHosts: [
-      'app.wwoom.com',
-      // Add more hosts here if needed
-    ],
-    hmr: {
-      host: 'app.wwoom.com',
-      protocol: 'wss',
-      clientPort: 443,
-      path: '/',
-    },
+    // Only set tunnel HMR when a public host is provided; otherwise use default local WS
+    ...(process.env.VITE_TUNNEL_HOST || process.env.PUBLIC_HOST
+      ? {
+          allowedHosts: [String(process.env.VITE_TUNNEL_HOST || process.env.PUBLIC_HOST)],
+          hmr: {
+            host: String(process.env.VITE_TUNNEL_HOST || process.env.PUBLIC_HOST),
+            protocol: 'wss',
+            clientPort: 443,
+            path: '/',
+          },
+        }
+      : {}),
     proxy: {
       "/api": {
         target: process.env.NODE_ENV === 'production' 

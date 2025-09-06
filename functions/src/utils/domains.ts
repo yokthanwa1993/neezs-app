@@ -36,8 +36,8 @@ export function getAllowedOrigins(): string[] {
     // Wildcards are not valid in CORS header; keep explicit.
   }
   // Local dev ports used in ecosystem
-  list.add('http://localhost:5003'); // Vite app
-  list.add('http://localhost:3010'); // Next web
+  list.add('http://localhost:5000'); // Vite app
+  list.add('http://localhost:3000'); // Next web
   list.add('http://localhost:8000'); // API
 
   // Codespaces base (if provided), also add common -3000/-5000/-8000 ports
@@ -52,4 +52,3 @@ export function getAllowedOrigins(): string[] {
   }
   return Array.from(list);
 }
-
