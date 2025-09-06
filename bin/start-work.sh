@@ -86,5 +86,5 @@ pm2 status
 
 echo "[start-work] Endpoints (local/Codespaces forwarded):"
 echo "  - App (Vite):   http://localhost:5000"
-echo "  - Web (Next):   http://localhost:3010"
+echo "  - Web (Next):   http://localhost:3000"
 echo "  - API:          http://localhost:8000/api"
