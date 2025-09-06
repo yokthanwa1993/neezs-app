@@ -11,7 +11,7 @@ show_ports() {
     echo "├─────────────────┼─────────┼──────────────────────────┤"
     echo "│ neezs-backend   │ :8000   │ http://localhost:8000    │"
     echo "│ neezs-frontend  │ :5000   │ http://localhost:5000    │"
-    echo "│ neezs-web       │ :3010   │ http://localhost:3010    │"
+    echo "│ neezs-web       │ :3000   │ http://localhost:3000    │"
     echo "└─────────────────┴─────────┴──────────────────────────┘"
     echo ""
 }
