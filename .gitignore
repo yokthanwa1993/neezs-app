@@ -27,3 +27,4 @@ apps/app/.env.local
 
 # OS files
 .DS_Store
+.env
